@@ -3,6 +3,8 @@
 
 using namespace std;
 
+void step(int step_num, int city_num, int lnt);
+
 int R[LEN][LEN] = {
     {0, 4, 2, 0, 0},
     {4, 0, 2, 1, 3},
@@ -14,6 +16,14 @@ int cities_mark[LEN] = {0, 0, 0, 0, 0};  // Пройденные города
 int sequeOfcities[LEN];  // Текущая последовательность городов
 int minSequeOfcities[LEN];  // Оптимальная последовательность городов
 int minlen = -1;  // Длина минимального пути
+
+int main() {
+    step(0, 0, 0);
+    cout << "\nMin path length = " << minlen << "   Sequence of cities: ";
+    for (int i = 0; i < LEN; i++) {
+        cout << minSequeOfcities[i] << "-";}
+    return 0;
+}
 
 void step(int step_num, int city_num, int lnt) {  
     if (step_num == LEN) {
@@ -36,11 +46,3 @@ void step(int step_num, int city_num, int lnt) {
     }
     cities_mark[city_num] = 0;
 } 
-
-int main() {
-    step(0, 0, 0);
-    cout << "\nMin path length = " << minlen << "   Sequence of cities: ";
-    for (int i = 0; i < LEN; i++) {
-        cout << minSequeOfcities[i] << "-";}
-    return 0;
-}
